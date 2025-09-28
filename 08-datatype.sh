@@ -1,5 +1,5 @@
 #!/bin/bash
 
-siva={"parvathi","vinayaka","subbramanyam"}
+siva=("parvathi","vinayaka","subbramanyam")
 
-echo "${sunny[@]}"
+echo "${siva[@]}"

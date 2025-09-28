@@ -7,4 +7,3 @@ if [ $1 -lt 0 ]; then
 else
     echo "$1 is greater than or equal to zero"
 fi
-

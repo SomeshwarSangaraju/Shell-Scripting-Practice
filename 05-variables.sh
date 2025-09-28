@@ -1,5 +1,5 @@
 #!/bin/bash
 
 echo "Enter the password"
-read pin_number
+read -s pin_number
 echo "$pin_number"

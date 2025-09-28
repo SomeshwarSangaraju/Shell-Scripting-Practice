@@ -2,4 +2,4 @@
 
 echo "Enter the password"
 read $!
-ech0 "$1"
+echo "$1"

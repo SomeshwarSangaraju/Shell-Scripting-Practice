@@ -20,7 +20,8 @@ echo "Script started executed at :$(date)" | tee -a $LOG_FILE
 user=$(id -u)
 
 if [ $user -ne 0 ]; then
-    echo "Please provide root previlage" 
+    echo "Please provide root previlage"
+    exit 1
 fi
 
 VALIDATE(){

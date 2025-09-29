@@ -1,5 +1,7 @@
 #!/bin/bash
 
-User=$(id)
+User=$(id -u)
+User1=$(id -g)
 
 echo "$User"
+echo "$User1"

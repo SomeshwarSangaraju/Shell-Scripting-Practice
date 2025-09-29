@@ -20,23 +20,23 @@ echo "Script started executed at :$(date)" | tee -a $LOG_FILE
 user=$(id -u)
 
 if [ $user -ne 0 ]; then
-    echo "Please provide root previlage"
+    echo " ERROR:: Please provide root previlage"
     exit 1
 fi
 
 VALIDATE(){
     if [ $1 -ne 0 ]; then
-        echo "ERROR :: Installing $2 is failure" | tee -a $LOG_FILE
+        echo -e "ERROR :: Installing $2 is $R failure" $N| tee -a $LOG_FILE
         exit 1;
     else
-        echo "SUCCESS:: Installing $2 is success" | tee -a $LOG_FILE
+        echo -e "SUCCESS:: Installing $2 is $G success" $N | tee -a $LOG_FILE
     fi
 }
 
 dnf list installed mysql &>>$LOG_FILE
 if [ $? -ne 0 ]; then
     dnf install mysql -y &>>$LOG_FILE
-    VALIDATE $? mysql &>>$LOG_FILE
+    VALIDATE $? "MySQL"
 else
     echo -e "MYSQL is already installed $Y Skipping $N" | tee -a $LOG_FILE
 fi
@@ -44,7 +44,7 @@ fi
 dnf list installed nginx &>>$LOG_FILE
 if [ $? -ne 0 ]; then
     dnf install nginx -y &>>$LOG_FILE
-    VALIDATE $? nginx &>>$LOG_FILE
+    VALIDATE $? "Nginx"
 else
     echo -e "NGINX is already installed $Y Skipping $N" | tee -a $LOG_FILE
 fi
@@ -52,7 +52,7 @@ fi
 dnf list installed python3 &>>$LOG_FILE
 if [ $? -ne 0 ]; then
     dnf install python3 -y &>>$LOG_FILE
-    VALIDATE $? python3 &>>$LOG_FILE
+    VALIDATE $? "python3"
 else
     echo -e "PYTHON is already installed $Y Skipping $N" | tee -a $LOG_FILE
 fi

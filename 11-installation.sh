@@ -6,10 +6,14 @@ User1=$(id -g)
 echo "$User"
 echo "$User1"
 
+
 if [ $User -ne 0 ]; then
     echo "Please provide root access"
+    echo "$?"
     exit 1;
 fi
+
+
 
 dnf install mysql -y
 

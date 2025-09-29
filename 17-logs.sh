@@ -35,13 +35,13 @@ VALIDATE(){
 
 EXISTORNOT(){
     if [ $? -ne 0 ]; then
-        dnf install mysql -y &>>$LOG_FILE
+        dnf install $1 -y &>>$LOG_FILE
         VALIDATE $? $1
     else
-        echo -e "MYSQL is already installed $Y Skipping $N" | tee -a $LOG_FILE
+        echo -e "$1 is already installed $Y Skipping $N" | tee -a $LOG_FILE
     fi
 }
 
-dnf list installed mysql &>>$LOG_FILE
+dnf list installed $1 &>>$LOG_FILE
 EXISTORNOT
 

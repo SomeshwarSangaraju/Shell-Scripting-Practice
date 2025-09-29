@@ -26,10 +26,10 @@ fi
 
 VALIDATE(){
     if [ $1 -ne 0 ]; then
-        echo "ERROR :: Installing $2 is failure" &>>$LOG_FILE
+        echo "ERROR :: Installing $2 is failure" | tee -a $LOG_FILE
         exit 1;
     else
-        echo "SUCCESS:: Installing $2 is success" &>>$LOG_FILE
+        echo "SUCCESS:: Installing $2 is success" | tee -a $LOG_FILE
     fi
 }
 

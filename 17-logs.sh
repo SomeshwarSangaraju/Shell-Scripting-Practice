@@ -33,26 +33,15 @@ VALIDATE(){
     fi
 }
 
+EXISTORNOT(){
+    if [ $? -ne 0 ]; then
+        dnf install mysql -y &>>$LOG_FILE
+        VALIDATE $? $1
+    else
+        echo -e "MYSQL is already installed $Y Skipping $N" | tee -a $LOG_FILE
+    fi
+}
+
 dnf list installed mysql &>>$LOG_FILE
-if [ $? -ne 0 ]; then
-    dnf install mysql -y &>>$LOG_FILE
-    VALIDATE $? "MySQL"
-else
-    echo -e "MYSQL is already installed $Y Skipping $N" | tee -a $LOG_FILE
-fi
+EXISTORNOT
 
-dnf list installed nginx &>>$LOG_FILE
-if [ $? -ne 0 ]; then
-    dnf install nginx -y &>>$LOG_FILE
-    VALIDATE $? "Nginx"
-else
-    echo -e "NGINX is already installed $Y Skipping $N" | tee -a $LOG_FILE
-fi
-
-dnf list installed python3 &>>$LOG_FILE
-if [ $? -ne 0 ]; then
-    dnf install python3 -y &>>$LOG_FILE
-    VALIDATE $? "python3"
-else
-    echo -e "PYTHON is already installed $Y Skipping $N" | tee -a $LOG_FILE
-fi

@@ -1,5 +1,5 @@
 #!/bin/bash
 
-User=$(id -u)
+User=$(id)
 
 echo "$User"

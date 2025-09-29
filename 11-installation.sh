@@ -12,8 +12,6 @@ if [ $User -ne 0 ]; then
     exit 1;
 fi
 
-echo "$?"
-
 
 dnf install mysql -y
 

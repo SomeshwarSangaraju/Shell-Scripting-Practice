@@ -17,10 +17,15 @@ VALIDATE(){
 }
 
 
-
 for package in $*
 do 
-    $package
+    dnf list installed $package
+    if [ $? -ne 0 ]; then
+      dnf install $package -y
+      VALIDATE $? $package
+    else
+        echo "$package is already installed"
+    fi  
 done
 
 

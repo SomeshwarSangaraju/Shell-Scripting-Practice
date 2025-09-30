@@ -9,15 +9,14 @@ fi
 
 VALIDATE(){
     if [ $1 -ne 0 ]; then
-        dnf install $2 -y
+        echo "$2 Installing failure"
         exit 1
     else 
-        echo "$2 is already exist"
+        echo "$2 Installing success"
     fi
 }
 
-dnf list installed mysql
-VALIDATE $? "mysql"
+
 
 for package in $*
 do 

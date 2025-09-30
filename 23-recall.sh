@@ -19,4 +19,9 @@ VALIDATE(){
 dnf list installed mysql
 VALIDATE $? "mysql"
 
+for package in $*
+do 
+    $package
+done
+
 

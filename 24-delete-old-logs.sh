@@ -19,4 +19,4 @@ while IFS read -r $filepath
 do
     echo "$filepath is deleteing"
     rm -rf $filepath
-done >>> $FILES_TO_DELETE
+done <<< $FILES_TO_DELETE
